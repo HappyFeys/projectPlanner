@@ -1,12 +1,10 @@
-export function addTask() {
-    const btnAddTask = document.querySelectorAll('.addWhite')
-  for (let i = 0; i < btnAddTask.length; i++) {
-    btnAddTask[i].addEventListener('click', ()=> {
+
+export let CreateTask = (e) => {
         //récupération des valeurs
-        let valueName = btnAddTask[i].parentNode.parentNode.children[0].value
-        let valueDescription;
-        let valueScore;
-        let valueDeadLine;
+        let valueName = "test"
+        let valueDescription = "test"
+        let valueScore = "test"
+        let valueDeadLine = "test"
         //création de l'objet 
         const newTask = {
             taskName: valueName,
@@ -14,35 +12,31 @@ export function addTask() {
             score : valueScore,
             deadLine : valueDeadLine
         };
-        console.log(newTask);
-        //il faut mtn que je push mon objet dans un tableau ou l'index correspond à l'index de ma zone de tache. 
-        //si le tableau à l'index i n'existe pas on le crée
-        if (!tasksArray[i]) {
-            tasksArray[i] = [];
-        }
-        tasksArray[i].push(newTask);
-        generateHTML(i)
-    })
-  }
-}
 
-function generateHTML(i) {
+    let getid = e.target.id + "";
+    getid = getid.slice(11);
+    console.log(getid);
+    generateHTML(newTask, getid)
+    }
+
+function generateHTML(obj,i) {
     
-    const zoneTask = document.querySelectorAll('.zone__tache')
+    const zoneTask = document.querySelectorAll('.zone__task')
+    console.log(zoneTask);
     //création de la zone de task
     const div = document.createElement('div');
     div.classList.add('task');
-    div.dataset.taskId=newTask.id;
+    //div.dataset.taskId=newTask.id;
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
     checkbox.classList.add('checkedBox')
     div.appendChild(checkbox);
     const p = document.createElement('p');
-    p.innerText = valueInput;
+    p.innerText = obj.taskName;
     div.appendChild(p);
     const btnDelete = document.createElement('img')
-    btnDelete.src = "assets/img/icons/delete.svg";
+    //btnDelete.src = "assets/img/icons/delete.svg";
     btnDelete.classList.add("btnDelete")
     div.appendChild(btnDelete)
-    zoneTask[i].insertAdjacentElement('afterbegin', div)
+    zoneTask[i].appendChild(div)
 }
