@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script defer src="assets/js/main.js"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-*" crossorigin="anonymous" />
 </head>
 <body>
@@ -29,6 +29,12 @@
                         <button class="btnPlus"><i class="fa-solid fa-plus"></i></button>
                         <button class="filter--local"><i class="fas fa-filter"></i></button>
                 </div>
+                <div class="add__toggle">
+                    <!--Zone toggle générée en JS-->
+                </div>
+                <div class="zone__task">
+                    <!--Zone task générée en JS-->
+                </div>
                     
             </div>
         </section>
@@ -40,6 +46,12 @@
                     <button class="filter--local"><i class="fas fa-filter"></i></button>
                 </div>
             </div>
+            <div class="add__toggle">
+                <!--Zone toggle générée en JS-->
+            </div>
+            <div class="zone__task">
+                <!--Zone task générée en JS-->
+            </div>
         </section>
         <section class="task__container">
             <div id="Done">
@@ -49,10 +61,20 @@
                     <button class="filter--local"><i class="fas fa-filter"></i></button>
                 </div>
             </div>
+            <div class="add__toggle">
+                <!--Zone toggle générée en JS-->
+            </div>
+            <div class="zone__task">
+                <!--Zone task générée en JS-->
+            </div>
         </section>
     </main>
     <footer>
 
     </footer>
+    <script type="module" src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/createTask.js"></script>
+    <script type="module" src="assets/js/LocalStorage.js"></script>
+    <script type="module" src="assets/js/styloxis.js"></script>
 </body>
 </html>
