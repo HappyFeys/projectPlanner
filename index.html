@@ -5,41 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-*" crossorigin="anonymous" />
 </head>
 <body>
     <header>
-        <div>
-            <h1>📅 Planner</h1>
-            <button id="btnAddProject"><i class="fa-solid fa-plus"></i></button> <!--Lorsqu'on clique sur ce bouton, on ajoute un fait pop un display qui nous propose 2 champs a remplir, un pour le nom de projet et un pour la deadline. On récupère ces infos pour les display dans les champs en dessous.-->
-            <p><!-- Nom généré en JS --></p>
-            <p><!-- DeadLine généré en JS--></p>
-        </div>
-        <div>
-            <div id="progressionBar"></div>
+        <div class="header__top">
+            <div class="header__title">
+                <h1>📅 Planner</h1>
+                <button id="btnAddProject"><i class="fa-solid fa-plus"></i></button> <!--Lorsqu'on clique sur ce bouton, on ajoute un fait pop un display qui nous propose 2 champs a remplir, un pour le nom de projet et un pour la deadline. On récupère ces infos pour les display dans les champs en dessous.-->
+                <p id="project--name"><!-- Nom généré en JS --></p>
+                <p id="project--deadLine"><!-- DeadLine généré en JS--></p>
+            </div>
             <button id="filter--global"><i class="fas fa-filter"></i></button>
+        </div>
+        <div id="progressionBar">
+            <div id="doing"></div>
+            <div id="done"></div>
         </div>
     </header>
     <main>
         <section class="task__container">
-            <div id="ToDo">
-                <p>To Do</p>
+            <div class="task__container__header" id="toDo">
+                <p>To do</p>
                 <div>
-                        <button class="btnPlus"><i class="fa-solid fa-plus"></i></button>
-                        <button class="filter--local"><i class="fas fa-filter"></i></button>
+                    <button class="btnPlus"><i class="fa-solid fa-plus"></i></button>
+                    <button class="filter--local"><i class="fas fa-filter"></i></button>
                 </div>
-                <div class="add__toggle">
-                    <!--Zone toggle générée en JS-->
-                </div>
-                <div class="zone__task">
-                    <!--Zone task générée en JS-->
-                </div>
-                    
+            </div>
+            <div class="add__toggle">
+                <!--Zone toggle générée en JS-->
+            </div>
+            <div class="zone__task">
+                <!--Zone task générée en JS-->
             </div>
         </section>
         <section class="task__container">
-            <div id="Doing">
+            <div class="task__container__header" id="Doing">
                 <p>Doing</p>
                 <div>
                     <button class="btnPlus"><i class="fa-solid fa-plus"></i></button>
@@ -54,7 +58,7 @@
             </div>
         </section>
         <section class="task__container">
-            <div id="Done">
+            <div class="task__container__header" id="Done">
                 <p>Done</p>
                 <div>
                     <button class="btnPlus"><i class="fa-solid fa-plus"></i></button>
@@ -70,11 +74,14 @@
         </section>
     </main>
     <footer>
+        <p>Done by Zahra, Nathanael and Dylan</p>
+        <p>BeCode - KELLER 7</p>
 
     </footer>
     <script type="module" src="assets/js/main.js"></script>
     <script type="module" src="assets/js/createTask.js"></script>
     <script type="module" src="assets/js/LocalStorage.js"></script>
     <script type="module" src="assets/js/styloxis.js"></script>
+    <script type="module" src="assets/js/createProject.js"></script>
 </body>
 </html>
