@@ -10,48 +10,49 @@
 </head>
 <body>
     <header>
-        <h1>📅 Planner</h1>
-        <p>Project Name</p>
-        <nav>
-            <div id="progression-bar"></div>
-            <div class="filter-btn">
-                <button id="filter-global"><i class="fas fa-filter"></i></button>
-            </div>
-        </nav>
-            <main>
-                <section class="task-container">
-                <div id="To-do">
-                    <header>
-                        <section><p>To Do</p></section>
-                        <section>
-                            <button id="btn-plus"><i class="fa-solid fa-plus"></i></button>
-                            <button id="filter-local"><i class="fas fa-filter"></i></button>
-                        </section>
-                    </header>
-                </div>
-                </section>
-            <section class="task-container">
-                <div id="Doing"></div>
-                <header>
-                    <section><p>Doing</p></section>
-                    <section>
-                        <button id="btn-plus"><i class="fa-solid fa-plus"></i></button>
-                        <button id="filter-local"><i class="fas fa-filter"></i></button>
-                </header>
-            </section>
-            <section class="task-container">
-                <div id="Done">
-                <header>
-                    <section><p>Done</p></section>
-                    <section>
-                        <button id="btn-plus"><i class="fa-solid fa-plus"></i></button>
-                        <button id="filter-local"><i class="fas fa-filter"></i></button>
-                    </section>
-                </header>
-                </div>
-            </section>
-            </main>
-            <footer></footer>
+        <div>
+            <h1>📅 Planner</h1>
+            <button id="btnAddProject"><i class="fa-solid fa-plus"></i></button> <!--Lorsqu'on clique sur ce bouton, on ajoute un fait pop un display qui nous propose 2 champs a remplir, un pour le nom de projet et un pour la deadline. On récupère ces infos pour les display dans les champs en dessous.-->
+            <p><!-- Nom généré en JS --></p>
+            <p><!-- DeadLine généré en JS--></p>
+        </div>
+        <div>
+            <div id="progressionBar"></div>
+            <button id="filter--global"><i class="fas fa-filter"></i></button>
+        </div>
     </header>
+    <main>
+        <section class="task__container">
+            <div id="ToDo">
+                <p>To Do</p>
+                <div>
+                        <button class="btnPlus"><i class="fa-solid fa-plus"></i></button>
+                        <button class="filter--local"><i class="fas fa-filter"></i></button>
+                </div>
+                    
+            </div>
+        </section>
+        <section class="task__container">
+            <div id="Doing">
+                <p>Doing</p>
+                <div>
+                    <button class="btnPlus"><i class="fa-solid fa-plus"></i></button>
+                    <button class="filter--local"><i class="fas fa-filter"></i></button>
+                </div>
+            </div>
+        </section>
+        <section class="task__container">
+            <div id="Done">
+                <p>Done</p>
+                <div>
+                    <button class="btnPlus"><i class="fa-solid fa-plus"></i></button>
+                    <button class="filter--local"><i class="fas fa-filter"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
 </body>
 </html>
