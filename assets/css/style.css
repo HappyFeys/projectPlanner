@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Carrois+Gothic&family=Inconsolata:wght@200..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Nanum+Gothic&family=Poetsen+One&family=Sedgwick+Ave+Display&display=swap");
+header h1 {
+  font-family: Poetsen One;
+  font-size: 2rem;
+}
+header nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+main .task-container {
+  display: flex;
+  width: 100%;
+  max-width: 200px;
+  background-color: grey;
+  padding: 20px 20px 80px;
+  border-radius: 1rem;
+}
+main .task-container header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+main .task-container header button {
+  margin-top: 10px;
+}
