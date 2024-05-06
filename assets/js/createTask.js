@@ -1,48 +1,52 @@
-export function addTask() {
-    const btnAddTask = document.querySelectorAll('.addWhite')
-  for (let i = 0; i < btnAddTask.length; i++) {
-    btnAddTask[i].addEventListener('click', ()=> {
-        //récupération des valeurs
-        let valueName = btnAddTask[i].parentNode.parentNode.children[0].value
-        let valueDescription;
-        let valueScore;
-        let valueDeadLine;
-        //création de l'objet 
+
+export let CreateTask = (e) => {
+    let getid = e.target.id + "";
+    getid = getid.slice(11);
+
+    //récupération des valeurs
+    let valueName = GetValueById('taskName_' + getid);
+    let valueDescription = GetValueById('taskDescription_' + getid)
+    let valueScore = GetValueById('taskPriority_' + getid)
+    let valueDeadLine = GetValueById('taskDate_' + getid)
+
+        //création de l'objet
         const newTask = {
             taskName: valueName,
             description : valueDescription,
             score : valueScore,
             deadLine : valueDeadLine
         };
-        console.log(newTask);
-        //il faut mtn que je push mon objet dans un tableau ou l'index correspond à l'index de ma zone de tache. 
-        //si le tableau à l'index i n'existe pas on le crée
-        if (!tasksArray[i]) {
-            tasksArray[i] = [];
-        }
-        tasksArray[i].push(newTask);
-        generateHTML(i)
-    })
-  }
+
+    generateHTML(newTask, getid)
 }
 
-function generateHTML(i) {
-    
-    const zoneTask = document.querySelectorAll('.zone__tache')
+
+function generateHTML(obj,i) {
+    const zoneTask = document.querySelectorAll('.zone__task')
+
     //création de la zone de task
     const div = document.createElement('div');
     div.classList.add('task');
-    div.dataset.taskId=newTask.id;
-    const checkbox = document.createElement('input');
-    checkbox.setAttribute('type', 'checkbox');
-    checkbox.classList.add('checkedBox')
-    div.appendChild(checkbox);
+
+    div.appendChild(Html_p(obj.taskName));
+    div.appendChild(Html_p(obj.description));
+    div.appendChild(Html_p(obj.score));
+    div.appendChild(Html_p(obj.deadLine));
+
+
+    zoneTask[i].appendChild(div)
+}
+
+
+//  Function recurante
+function Html_p(text) {
     const p = document.createElement('p');
-    p.innerText = valueInput;
-    div.appendChild(p);
-    const btnDelete = document.createElement('img')
-    btnDelete.src = "assets/img/icons/delete.svg";
-    btnDelete.classList.add("btnDelete")
-    div.appendChild(btnDelete)
-    zoneTask[i].insertAdjacentElement('afterbegin', div)
+    p.innerText = text;
+    return p
+}
+
+function GetValueById(id) {
+    let val = document.getElementById(id).value + "";
+    document.getElementById(id).value = "";
+    return val
 }
