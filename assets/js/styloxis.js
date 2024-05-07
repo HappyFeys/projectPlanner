@@ -35,11 +35,16 @@ export function GetAllOnDone() {
 
 
 function SetBalise(id) {
+    const CurrentDate = new Date();
+    let m = CurrentDate.getMonth() + 1
+    let d = CurrentDate.getDate()
+    let MinDate = CurrentDate.getFullYear() + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d);
+
     return '<input type="text" placeholder="name" name="task" id="taskName_' + id + '"/>'
         +
         '<input type="text" placeholder="description" name="description" id="taskDescription_' + id + '"/>'
         +
-        '<input type="date" name="Date" id="taskDate_' + id + '">'
+        '<input type="date" min="' + MinDate + '" name="Date" id="taskDate_' + id + '" value="' + MinDate +'">'
         +
         '<select id="taskPriority_' + id + '"><option>🔥</option><option>🔥🔥</option><option>🔥🔥🔥</option></select>'
         +
