@@ -194,6 +194,12 @@ body main .task__container .zone__task .task .scoreDate {
 body main .task__container .zone__task .task .description {
   display: none;
 }
+body main .task__container .zone__task .task .btnDelete {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 body main .task__container .zone__task .task:hover .description {
   display: block;
 }

@@ -218,6 +218,12 @@ body{
                     .description{
                         display: none;
                     }
+                    .btnDelete{
+                        width: 25%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
                 }
                 .task:hover{
                     .description{
