@@ -17,7 +17,8 @@ export let CreateTask = (e) => {
             taskName: valueName,
             description : valueDescription,
             score : valueScore,
-            deadLine: new Date(valueDeadLine).getTime()
+            deadLine: (new Date(valueDeadLine)).getTime(),
+            creation: (new Date()).getTime()
         };
     
     let Task = Array.from(Get("taskList",[]));
@@ -26,6 +27,22 @@ export let CreateTask = (e) => {
 
     let zone = document.getElementsByClassName('add__toggle');
     zone[getid].innerHTML = "";
+    
+    ReloadPlanning();
+}
+
+let deleteTask = (e) => {
+    let Task = Array.from(Get("taskList", []));
+
+    for (let i = 0; i < Task.length; i++) {
+        if (Task[i].newTask.creation + "" == e.target.id + "") {
+            console.log("test")
+            Task.splice(i, 1);
+            i = 99999;
+        }
+    }
+
+    Set("taskList", Task);
     
     ReloadPlanning();
 }
@@ -59,6 +76,14 @@ function generateHTML(obj,i) {
     let ls = Html_div("leftSide");
     let sd = Html_div("scoreDate");
     let bd = Html_div("btnDelete");
+
+    let btn = document.createElement('button')
+    btn.addEventListener('click', deleteTask)
+    btn.textContent = "X"
+    btn.id = obj.creation + "";
+
+    bd.appendChild(btn)
+
 
 
     ls.appendChild(Html_p(obj.taskName));
