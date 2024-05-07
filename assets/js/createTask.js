@@ -17,7 +17,8 @@ export let CreateTask = (e) => {
             taskName: valueName,
             description : valueDescription,
             score : valueScore,
-            deadLine: new Date(valueDeadLine).getTime()
+            deadLine: (new Date(valueDeadLine)).getTime(),
+            creation: (new Date()).getTime()
         };
     
     let Task = Array.from(Get("taskList",[]));
@@ -30,6 +31,22 @@ export let CreateTask = (e) => {
     ReloadPlanning();
 }
 
+let deleteTask = (e) => {
+    let Task = Array.from(Get("taskList", []));
+
+    for (let i = 0; i < Task.length; i++) {
+        if (Task[i].newTask.creation + "" == e.target.id + "") {
+            console.log("test")
+            Task.splice(i, 1);
+            i = 99999;
+        }
+    }
+
+    Set("taskList", Task);
+    
+    ReloadPlanning();
+}
+
 function ReloadPlanning() {
     cleanHTML();
 
@@ -38,9 +55,22 @@ function ReloadPlanning() {
         generateHTML(element.newTask, element.id)
     });
 
-    GetAllFlame();
-    GetAllOnWorking();
-    GetAllOnDone();
+
+    let donePercent = (100 / GetAllFlame()) * GetAllOnDone();
+    let doingPercent = (100 / GetAllFlame()) * GetAllOnWorking();
+
+    let pb = document.querySelector('#progressionBar');
+    let doing = document.querySelector('#doing');
+    let done = document.querySelector('#done');
+
+    pb.style = "overflow: hidden;display: flex;flex-direction: row;"
+    
+    doing.style = "width: " + (doingPercent) + "%;background-color: yellow;"
+    done.style = "width: " + (donePercent) + "%;background-color: green"
+
+    doing.textContent = ' '
+    done.textContent = ' '
+
 }
 
 function cleanHTML() {
@@ -59,6 +89,14 @@ function generateHTML(obj,i) {
     let ls = Html_div("leftSide");
     let sd = Html_div("scoreDate");
     let bd = Html_div("btnDelete");
+
+    let btn = document.createElement('button')
+    btn.addEventListener('click', deleteTask)
+    btn.textContent = "X"
+    btn.id = obj.creation + "";
+
+    bd.appendChild(btn)
+
 
 
     ls.appendChild(Html_p(obj.taskName));

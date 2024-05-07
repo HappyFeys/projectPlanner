@@ -8,7 +8,7 @@ export function GetAllFlame() {
     Task.forEach(element => {
        score += element.newTask.score.length/2;
     });
-    console.log(score);
+    return score;
 }
 
 export function GetAllOnWorking() {
@@ -19,7 +19,7 @@ export function GetAllOnWorking() {
             score += element.newTask.score.length / 2;
         }
     });
-    console.log(score);
+    return score;
 }
 
 export function GetAllOnDone() {
@@ -30,7 +30,7 @@ export function GetAllOnDone() {
             score += element.newTask.score.length / 2;
         }
     });
-    console.log(score);
+    return score;
 }
 
 
