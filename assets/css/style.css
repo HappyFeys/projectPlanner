@@ -45,6 +45,61 @@ body header .header__top button {
 body header .header__top #filter--global {
   align-self: flex-end;
 }
+body header .header__top .header__btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+body header .header__top .header__btn input {
+  margin-top: 10px;
+}
+body header .header__top .header__btn .checkbox {
+  height: 17.5px;
+  width: 35px;
+  background: #222;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 17.5px;
+  box-shadow: inset 0 4px 17.5px rgba(0, 0, 0, 0.1), inset 0 4px 4px rgba(0, 0, 0, 0.1), inset 0 -2px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+body header .header__top .header__btn .checkbox::before {
+  height: 17.5px;
+  width: 17.5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  background: linear-gradient(to bottom, #444, #222);
+  border-radius: 17.5px;
+  transform: scale(0.9);
+  transition: 0.5s;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5), inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px 1px rgba(255, 255, 255, 0.2);
+}
+body header .header__top .header__btn .checkbox:checked {
+  background: #fff;
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1), inset 0 1px 4px rgba(0, 0, 0, 0.1), inset 0 -2px 2px rgba(0, 0, 0, 0.05);
+}
+body header .header__top .header__btn .checkbox:checked::before {
+  left: 17.5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), inset 1px 1px rgb(255, 255, 255), inset -1px 1px rgb(255, 255, 255);
+  background: linear-gradient(to bottom, #eaeaea, #f9f9f9);
+}
+body header .header__top .header__btn .checkbox::after {
+  content: "";
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 80px;
+  left: 35px;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+}
 body header #progressionBar {
   width: 85%;
   height: 20px;
