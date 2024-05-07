@@ -56,11 +56,20 @@ function generateHTML(obj,i) {
     //création de la zone de task
     const div = document.createElement('div');
     div.classList.add('task');
+    
+    let ls = Html_div("leftSide");
+    let sd = Html_div("scoreDate");
+    let bd = Html_div("btnDelete");
 
-    div.appendChild(Html_p(obj.taskName));
-    div.appendChild(Html_p(obj.description));
-    div.appendChild(Html_p(obj.score));
-    div.appendChild(Html_p(obj.deadLine));
+
+    ls.appendChild(Html_p(obj.taskName));
+    ls.appendChild(Html_p(obj.description,"description"));
+    sd.appendChild(Html_p(obj.score));
+    sd.appendChild(Html_p(obj.deadLine));
+    ls.appendChild(sd);
+
+    div.appendChild(ls);
+    div.appendChild(bd);
 
 
     zoneTask[i].appendChild(div)
@@ -69,9 +78,10 @@ function generateHTML(obj,i) {
 ReloadPlanning();
 
 //  Function recurante
-function Html_p(text) {
+function Html_p(text,classAdded) {
     const p = document.createElement('p');
     p.innerText = text;
+    if(classAdded != null){p.classList.add(classAdded)}
     return p
 }
 
@@ -79,4 +89,10 @@ function GetValueById(id) {
     let val = document.getElementById(id).value + "";
     document.getElementById(id).value = "";
     return val
+}
+
+function Html_div(classAdded) {
+    const p = document.createElement('div');
+    p.classList.add(classAdded);
+    return p
 }
