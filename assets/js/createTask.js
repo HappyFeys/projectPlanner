@@ -3,9 +3,8 @@ import { Get, Set } from "./LocalStorage.js"
 
 
 export let CreateTask = (e) => {
-    let getid = e.target.id + "";
+    let getid = e.target.parentNode.id + "";
     getid = getid.slice(11);
-
 
     //récupération des valeurs
     let valueName = GetValueById('taskName_' + getid);
@@ -18,7 +17,7 @@ export let CreateTask = (e) => {
             taskName: valueName,
             description : valueDescription,
             score : valueScore,
-            deadLine : valueDeadLine
+            deadLine: new Date(valueDeadLine).getTime()
         };
     
     let Task = Array.from(Get("taskList",[]));
@@ -65,7 +64,7 @@ function generateHTML(obj,i) {
     ls.appendChild(Html_p(obj.taskName));
     ls.appendChild(Html_p(obj.description,"description"));
     sd.appendChild(Html_p(obj.score));
-    sd.appendChild(Html_p(obj.deadLine));
+    sd.appendChild(Html_p(time((parseInt(obj.deadLine) + ((new Date()).getTimezoneOffset() * 60000)) - parseInt((new Date()).getTime()))));
     ls.appendChild(sd);
 
     div.appendChild(ls);
@@ -86,6 +85,7 @@ function Html_p(text,classAdded) {
 }
 
 function GetValueById(id) {
+    console.log(document.getElementById(id),id)
     let val = document.getElementById(id).value + "";
     document.getElementById(id).value = "";
     return val
@@ -95,4 +95,22 @@ function Html_div(classAdded) {
     const p = document.createElement('div');
     p.classList.add(classAdded);
     return p
+}
+
+function time(timeSpan) {
+    let seconde = Math.floor(timeSpan / 1000);
+    let minute = Math.floor(seconde / 60);
+    let heure = Math.floor(minute / 60);
+    let jour = Math.floor(heure / 24); 
+
+    seconde -= (minute * 60)
+    minute -= (heure * 60)
+    heure -= (jour * 24)
+
+    let sayJour = Math.floor(jour) > 0 ? Math.floor(jour) > 1 ? Math.floor(jour) + " days " : Math.floor(jour) + " day " : "";
+    let sayHour = Math.floor(heure) > 0 ? Math.floor(heure) > 1 ? Math.floor(heure) + " hours " : Math.floor(heure) + " hour " : "";
+    let sayMinute = Math.floor(minute) > 0 ? Math.floor(minute) > 1 ? Math.floor(minute) + " minutes " : Math.floor(minute) + " minute " : "";
+
+
+    return sayJour + sayHour + sayMinute
 }
