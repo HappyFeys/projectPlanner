@@ -35,15 +35,20 @@ export function GetAllOnDone() {
 
 
 function SetBalise(id) {
-    return '<input type="text" name="task" id="taskName_' + id + '"/>'
+    const CurrentDate = new Date();
+    let m = CurrentDate.getMonth() + 1
+    let d = CurrentDate.getDate()
+    let MinDate = CurrentDate.getFullYear() + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d);
+
+    return '<input type="text" placeholder="name" name="task" id="taskName_' + id + '"/>'
         +
-        '<input type="text" name="description" id="taskDescription_' + id + '"/>'
+        '<input type="text" placeholder="description" name="description" id="taskDescription_' + id + '"/>'
         +
-        '<input type="date" name="Date" id="taskDate_' + id + '">'
+        '<input type="date" min="' + MinDate + '" name="Date" id="taskDate_' + id + '" value="' + MinDate +'">'
         +
         '<select id="taskPriority_' + id + '"><option>🔥</option><option>🔥🔥</option><option>🔥🔥🔥</option></select>'
         +
-        '<button id="taskButton_' + id + '">Add task</button>'
+        '<button class="toggleProject" id="taskButton_' + id + '"><i class="fa-solid fa-plus"></i></button>'
         ;
 }
 
@@ -60,9 +65,15 @@ export let AddTask = (e) => {
     }
 }
 
-let btnPlus = document.getElementsByClassName('btnPlus');
 
-for (let i = 0; i < btnPlus.length; i++){
-    btnPlus[i].id = i;
-    btnPlus[i].addEventListener('click', AddTask);
-}
+    let btnPlus = document.getElementsByClassName('btnPlus');
+
+    for (let i = 0; i < btnPlus.length; i++) {
+        btnPlus[i].id = i;
+        btnPlus[i].addEventListener('click', AddTask);
+    }
+
+    let zones = document.getElementsByClassName('add__toggle');
+    for (const zone of zones) {
+        zone.innerHTML = "";
+    }
