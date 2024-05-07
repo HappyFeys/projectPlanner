@@ -1,7 +1,11 @@
+import { GetAllFlame, GetAllOnWorking, GetAllOnDone } from "./styloxis.js"
+import { Get, Set } from "./LocalStorage.js"
+
 
 export let CreateTask = (e) => {
     let getid = e.target.id + "";
     getid = getid.slice(11);
+
 
     //récupération des valeurs
     let valueName = GetValueById('taskName_' + getid);
@@ -16,11 +20,36 @@ export let CreateTask = (e) => {
             score : valueScore,
             deadLine : valueDeadLine
         };
+    
+    let Task = Array.from(Get("taskList",[]));
+    Task.push({ id: getid, newTask: newTask });
+    Set("taskList", Task);
 
-    generateHTML(newTask, getid)
+    let zone = document.getElementsByClassName('add__toggle');
+    zone[getid].innerHTML = "";
+    
+    ReloadPlanning();
 }
 
+function ReloadPlanning() {
+    cleanHTML();
 
+    let Task = Array.from(Get("taskList", []));
+    Task.forEach(element => {
+        generateHTML(element.newTask, element.id)
+    });
+
+    GetAllFlame();
+    GetAllOnWorking();
+    GetAllOnDone();
+}
+
+function cleanHTML() {
+    const zoneTask = document.querySelectorAll('.zone__task')
+    for (const zone of zoneTask) {
+        zone.innerHTML = "";
+    }
+}
 function generateHTML(obj,i) {
     const zoneTask = document.querySelectorAll('.zone__task')
 
@@ -37,6 +66,7 @@ function generateHTML(obj,i) {
     zoneTask[i].appendChild(div)
 }
 
+ReloadPlanning();
 
 //  Function recurante
 function Html_p(text) {
