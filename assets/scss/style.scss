@@ -1,9 +1,15 @@
 //Variable color
+:root{
+    --background : #f0f0f0;
+    --border: #333;
+    --color: #140d27;
+    --header : #4D7E96;
+}
 
 $raisinBlack : #140D27;
 $acidGreen : #B7C828;
 $platinium : #EBE6E0;
-$moonstoneBlue : #6CB1B4;
+$moonstoneBlue : #0C2F41;
 $background : #f0f0f0;
 $border : #333;
 
@@ -34,15 +40,15 @@ body{
     width: 100%;
     font-family: $poppins;
     font-weight:300 ;
-    background-color: $background;
-    color: $raisinBlack;
+    background-color: var(--background);
     header{
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: $moonstoneBlue;
+        background-color: var(--header);
+        color: var(--color);
         .header__top{
             width: 85%;
             display: flex;
@@ -122,8 +128,6 @@ body{
                 .checkbox::after{
                     content: "";
                     position: absolute;
-                    height: 100vh;
-                    width: 100vw;
                     top: 80px;
                     left: 35px;
                     z-index: -1;
@@ -153,6 +157,7 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
+        color: var(--color);
         @include responsive(768px){
             flex-direction: row;
             align-items: flex-start;
@@ -160,11 +165,11 @@ body{
         }
         .task__container{
             width: 85%;
-            border: 1px solid $border;
+            border: 1px solid var(--border);
             margin: 30px 0;
             border-radius: 20px;
             padding: 10px;
-            box-shadow: 1px 2px 4px $raisinBlack;
+            box-shadow: 1px 2px 4px var(--color);
             @include responsive(768px){
                 margin: 10px;
                 min-height: 400px;
@@ -177,13 +182,13 @@ body{
             .task__container__header{
                 display: flex;
                 justify-content: space-between;
-                border-bottom: 1px solid $border;
+                border-bottom: 1px solid var(--border);
                 padding-bottom: 10px;
             }
             .add__toggle{
                 display: flex;
                 flex-direction: column;
-                border-bottom: 1px solid $border;
+                border-bottom: 1px solid var(--border);
                 input, select, button{
                     margin: 2px;
                 }
@@ -198,7 +203,7 @@ body{
                     font-size: 12px;
                     padding: 10px;
                     margin: 10px;
-                    border: 1px solid $border;
+                    border: 1px solid var(--border);
                     border-radius: 20px;
 
                 }
@@ -210,7 +215,8 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: $platinium;
+        background-color: var(--header);
         padding: 20px;
+        color: var(--color);
     }
 }

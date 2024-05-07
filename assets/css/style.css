@@ -1,3 +1,10 @@
+:root {
+  --background: #f0f0f0;
+  --border: #333;
+  --color: #140d27;
+  --header: #4D7E96;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,8 +19,7 @@ body {
   width: 100%;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
-  background-color: #f0f0f0;
-  color: #140D27;
+  background-color: var(--background);
 }
 body header {
   width: 100%;
@@ -21,7 +27,8 @@ body header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #6CB1B4;
+  background-color: var(--header);
+  color: var(--color);
 }
 body header .header__top {
   width: 85%;
@@ -92,8 +99,6 @@ body header .header__top .header__btn .checkbox:checked::before {
 body header .header__top .header__btn .checkbox::after {
   content: "";
   position: absolute;
-  height: 100vh;
-  width: 100vw;
   top: 80px;
   left: 35px;
   z-index: -1;
@@ -120,6 +125,7 @@ body main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: var(--color);
 }
 @media only screen and (min-width: 768px) {
   body main {
@@ -130,11 +136,11 @@ body main {
 }
 body main .task__container {
   width: 85%;
-  border: 1px solid #333;
+  border: 1px solid var(--border);
   margin: 30px 0;
   border-radius: 20px;
   padding: 10px;
-  box-shadow: 1px 2px 4px #140D27;
+  box-shadow: 1px 2px 4px var(--color);
 }
 @media only screen and (min-width: 768px) {
   body main .task__container {
@@ -150,13 +156,13 @@ body main .task__container button {
 body main .task__container .task__container__header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 10px;
 }
 body main .task__container .add__toggle {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border);
 }
 body main .task__container .add__toggle input, body main .task__container .add__toggle select, body main .task__container .add__toggle button {
   margin: 2px;
@@ -172,7 +178,7 @@ body main .task__container .zone__task .task {
   font-size: 12px;
   padding: 10px;
   margin: 10px;
-  border: 1px solid #333;
+  border: 1px solid var(--border);
   border-radius: 20px;
 }
 body footer {
@@ -180,6 +186,7 @@ body footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #EBE6E0;
+  background-color: var(--header);
   padding: 20px;
+  color: var(--color);
 }
