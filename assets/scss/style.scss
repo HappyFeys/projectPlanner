@@ -200,12 +200,29 @@ body{
                 display: flex;
                 flex-direction: column;
                 .task{
+                    display: flex;
                     font-size: 12px;
                     padding: 10px;
                     margin: 10px;
-                    border: 1px solid var(--border);
+                    border: 2px solid var(--border);
                     border-radius: 20px;
-
+                    background-color: $platinium;
+                    color: $moonstoneBlue;
+                    .leftSide{
+                        width: 75%;
+                    }
+                    .scoreDate{
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    .description{
+                        display: none;
+                    }
+                }
+                .task:hover{
+                    .description{
+                        display: block;
+                    }
                 }
             }
         }

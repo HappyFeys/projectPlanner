@@ -1,3 +1,4 @@
+import { Get, Set } from "./LocalStorage.js"
 
 function toggleInput() {
     const btnToggle = document.querySelector("#btnAddProject")
@@ -19,8 +20,12 @@ function toggleInput() {
             } else {
                 divtoggle.style.display = "none";
             }
-            projectName.innerText = inputName.value;
-            let dateDeadLine = new Date(inputDeadLine.value)
+            let title = {
+                name : inputName.value,
+                deadline : inputDeadLine.value
+            }
+            projectName.innerText = title.name;
+            let dateDeadLine = new Date(title.deadline)
             let day = dateDeadLine.getDate()
             let month = dateDeadLine.getMonth()
             let year = dateDeadLine.getFullYear()

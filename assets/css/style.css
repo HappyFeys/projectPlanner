@@ -175,11 +175,27 @@ body main .task__container .zone__task {
   flex-direction: column;
 }
 body main .task__container .zone__task .task {
+  display: flex;
   font-size: 12px;
   padding: 10px;
   margin: 10px;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 20px;
+  background-color: #EBE6E0;
+  color: #0C2F41;
+}
+body main .task__container .zone__task .task .leftSide {
+  width: 75%;
+}
+body main .task__container .zone__task .task .scoreDate {
+  display: flex;
+  justify-content: space-between;
+}
+body main .task__container .zone__task .task .description {
+  display: none;
+}
+body main .task__container .zone__task .task:hover .description {
+  display: block;
 }
 body footer {
   width: 100%;
