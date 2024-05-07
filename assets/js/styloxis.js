@@ -1,4 +1,38 @@
 import { CreateTask } from "./createTask.js"
+import { Get, Set } from "./LocalStorage.js"
+
+
+export function GetAllFlame() {
+    let Task = Array.from(Get("taskList", []));
+    let score = 0;
+    Task.forEach(element => {
+       score += element.newTask.score.length/2;
+    });
+    console.log(score);
+}
+
+export function GetAllOnWorking() {
+    let Task = Array.from(Get("taskList", []));
+    let score = 0;
+    Task.forEach(element => {
+        if (element.id == 1) {
+            score += element.newTask.score.length / 2;
+        }
+    });
+    console.log(score);
+}
+
+export function GetAllOnDone() {
+    let Task = Array.from(Get("taskList", []));
+    let score = 0;
+    Task.forEach(element => {
+        if (element.id == 2) {
+            score += element.newTask.score.length / 2;
+        }
+    });
+    console.log(score);
+}
+
 
 function SetBalise(id) {
     return '<input type="text" name="task" id="taskName_' + id + '"/>'
