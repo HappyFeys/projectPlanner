@@ -55,9 +55,22 @@ function ReloadPlanning() {
         generateHTML(element.newTask, element.id)
     });
 
-    GetAllFlame();
-    GetAllOnWorking();
-    GetAllOnDone();
+
+    let donePercent = (100 / GetAllFlame()) * GetAllOnDone();
+    let doingPercent = (100 / GetAllFlame()) * GetAllOnWorking();
+
+    let pb = document.querySelector('#progressionBar');
+    let doing = document.querySelector('#doing');
+    let done = document.querySelector('#done');
+
+    pb.style = "overflow: hidden;display: flex;flex-direction: row;"
+    
+    doing.style = "width: " + (doingPercent) + "%;background-color: yellow;"
+    done.style = "width: " + (donePercent) + "%;background-color: green"
+
+    doing.textContent = ' '
+    done.textContent = ' '
+
 }
 
 function cleanHTML() {
