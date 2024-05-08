@@ -2,11 +2,11 @@ import { Get, Set } from "./LocalStorage.js"
 
 function toggleInput() {
     const btnToggle = document.querySelector("#btnAddProject")
-    btnToggle.addEventListener("click", (e)=>{
-        if (!(e.target.parentNode.parentNode.children[4])) {
+    btnToggle.addEventListener("click", (e) => {
+        if (document.querySelector("#toggleProject") == null) {
             createZone()
         }
-        else{
+        else {
             console.log("il existe déjà un projet");
             let inputName = document.querySelector('.inputName')
             let inputDeadLine = document.querySelector('.inputDeadLine')
@@ -19,8 +19,8 @@ function toggleInput() {
                 divtoggle.style.display = "none";
             }
             let title = {
-                name : inputName.value,
-                deadline : inputDeadLine.value
+                name: inputName.value,
+                deadline: inputDeadLine.value
             }
             initTitle(title)
         }
@@ -40,6 +40,7 @@ function createZone() {
     const headerTitle = document.querySelector(".header__title")
     const div = document.createElement("div")
     div.classList.add('toggleProject')
+    div.id = "toggleProject";
     headerTitle.appendChild(div)
     const inputNameProject = document.createElement("input")
     inputNameProject.classList.add("inputName")

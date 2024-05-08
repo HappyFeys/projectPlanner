@@ -149,7 +149,6 @@ function MoveTask(obj, x, y) {
     } 
 }
 
-
 export function findParentWithClass(element, className) {
     // Si l'élément est null ou si nous avons atteint l'élément racine du document, retourner null
     if (element === null || element === document.body) {
