@@ -14,7 +14,7 @@
     <header>
         <div class="header__top">
             <div class="header__title">
-                <h1>📅 Planner</h1>
+                <img class="logo" src="assets/images/logo.gif" alt="logo">
                 <button id="btnAddProject"><i class="fa-solid fa-plus"></i></button> <!--Lorsqu'on clique sur ce bouton, on ajoute un fait pop un display qui nous propose 2 champs a remplir, un pour le nom de projet et un pour la deadline. On récupère ces infos pour les display dans les champs en dessous.-->
                 <p id="project--name"><!-- Nom généré en JS --></p>
                 <p id="project--deadLine"><!-- DeadLine généré en JS--></p>
@@ -35,7 +35,12 @@
                 <p>To do</p>
                 <div>
                     <button class="btnPlus"><i class="fa-solid fa-plus"></i></button>
-                    <button class="filter--local"><i class="fas fa-filter"></i></button>
+                    <select name="filter--local" class="filter--local">
+                        <option value="noFilter">No Filter</option>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="score">Score</option>
+                    </select>
                 </div>
             </div>
             <div class="add__toggle">
@@ -50,7 +55,13 @@
                 <p>Doing</p>
                 <div>
                     <button class="btnPlus"><i class="fa-solid fa-plus"></i></button>
-                    <button class="filter--local"><i class="fas fa-filter"></i></button>
+                    <select name="filter--local" class="filter--local">
+                        <option value="noFilter">No Filter</option>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="score">Score</option>
+                    </select>
+
                 </div>
             </div>
             <div class="add__toggle">
@@ -65,7 +76,12 @@
                 <p>Done</p>
                 <div>
                     <button class="btnPlus"><i class="fa-solid fa-plus"></i></button>
-                    <button class="filter--local"><i class="fas fa-filter"></i></button>
+                    <select name="filter--local" class="filter--local">
+                        <option value="noFilter">No Filter</option>
+                        <option value="date">Date</option>
+                        <option value="name">Name</option>
+                        <option value="score">Score</option>
+                    </select>
                 </div>
             </div>
             <div class="add__toggle">
