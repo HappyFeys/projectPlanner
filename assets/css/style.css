@@ -45,6 +45,11 @@ body header .header__top button {
 body header .header__top #filter--global {
   align-self: flex-end;
 }
+body header .header__top #filter--global .filter-options-container {
+  position: absolute;
+  width: 60px;
+  text-align: center;
+}
 body header #progressionBar {
   width: 85%;
   height: 20px;

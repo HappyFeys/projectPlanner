@@ -63,6 +63,12 @@ body{
             }
             #filter--global{
                 align-self: flex-end;
+                    .filter-options-container{
+                        position: absolute;
+                        width: 60px;
+                        text-align: center
+                        // background-color: #6CB1B4;
+                    }
             }
         }
         #progressionBar{

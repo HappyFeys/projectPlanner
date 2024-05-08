@@ -27,7 +27,7 @@
         </div>
     </header>
     <main>
-        <section class="task__container">
+        <section class="task__container" data-status="to-do">
             <div class="task__container__header" id="toDo">
                 <p>To do</p>
                 <div>
@@ -42,7 +42,7 @@
                 <!--Zone task générée en JS-->
             </div>
         </section>
-        <section class="task__container">
+        <section class="task__container" data-status="doing">
             <div class="task__container__header" id="Doing">
                 <p>Doing</p>
                 <div>
@@ -57,7 +57,7 @@
                 <!--Zone task générée en JS-->
             </div>
         </section>
-        <section class="task__container">
+        <section class="task__container" data-status="done">
             <div class="task__container__header" id="Done">
                 <p>Done</p>
                 <div>
@@ -83,5 +83,6 @@
     <script type="module" src="assets/js/LocalStorage.js"></script>
     <script type="module" src="assets/js/styloxis.js"></script>
     <script type="module" src="assets/js/createProject.js"></script>
+    <script type="module" src="assets/js/filter.js"></script>
 </body>
 </html>
