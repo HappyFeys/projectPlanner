@@ -2,6 +2,7 @@ import { GetAllFlame, GetAllOnWorking, GetAllOnDone, findParentWithClass } from 
 import { Get, Set } from "./LocalStorage.js"
 import { sortAlphabetique, sortDate, sortscore } from "./filter.js"
 
+const filters = document.querySelectorAll(".filter--local");
 
 export let CreateTask = (e) => {
     let getid = e.target.parentNode.id + "";
@@ -140,14 +141,17 @@ function generateHTML(obj,i) {
     div.appendChild(ls);
     div.appendChild(bd);
 
-
-    zoneTask[i].appendChild(div)
+    if (filters[i].value == "noFilter") {
+        zoneTask[i].insertAdjacentElement("afterbegin", div)
+    } else {
+        zoneTask[i].appendChild(div)
+    }
 }
 
 
 ReloadPlanning();
 
-const filters = document.querySelectorAll(".filter--local");
+
 
 for (let i = 0; i < filters.length; i++) {
     filters[i].addEventListener('change', ReloadPlanning)

@@ -92,6 +92,8 @@ window.addEventListener('pointerdown', function (e) {
     if (parentWithClass !== null) {
         parentWithClass.classList.add('drag');
         CurrentObjectGet = parentWithClass.id;
+
+        MoveTask(parentWithClass, e.clientX, e.clientY)
     }
 })
 
@@ -125,13 +127,17 @@ window.addEventListener('pointermove', function (event) {
 
     var drag = document.querySelector(".drag");
 
-    if (drag != null) {
-        drag.style.position = "absolute";
-    
-        drag.style.left = `${x}px`;
-        drag.style.top = `${y}px`;
-    }
+    MoveTask(drag,x,y)
 })
+
+function MoveTask(obj, x, y) {
+    if (obj != null) {
+        obj.style.position = "absolute";
+
+        obj.style.left = `${x}px`;
+        obj.style.top = `${y}px`;
+    } 
+}
 
 
 export function findParentWithClass(element, className) {
