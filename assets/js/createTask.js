@@ -152,7 +152,6 @@ function generateHTML(obj,i) {
 ReloadPlanning();
 
 
-
 for (let i = 0; i < filters.length; i++) {
     filters[i].addEventListener('change', ReloadPlanning)
 }
@@ -192,7 +191,6 @@ function time(timeSpan) {
     let sayJour = Math.floor(jour) > 0 ? Math.floor(jour) > 1 ? Math.floor(jour) + " days " : Math.floor(jour) + " day " : "";
     let sayHour = Math.floor(heure) > 0 ? Math.floor(heure) > 1 ? Math.floor(heure) + " hours " : Math.floor(heure) + " hour " : "";
     let sayMinute = Math.floor(minute) > 0 ? Math.floor(minute) > 1 ? Math.floor(minute) + " minutes " : Math.floor(minute) + " minute " : "";
-
 
     return sayJour + sayHour + sayMinute
 }

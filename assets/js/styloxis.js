@@ -89,11 +89,17 @@ for (let a = 0; a < cont.length; a++){
 
 window.addEventListener('pointerdown', function (e) {
     let parentWithClass = findParentWithClass(e.target, 'task');
-    if (parentWithClass !== null) {
-        parentWithClass.classList.add('drag');
-        CurrentObjectGet = parentWithClass.id;
+    let btnDelete = findParentWithClass(e.target, 'btnDelete');
+    if (btnDelete !== null) { 
 
-        MoveTask(parentWithClass, e.clientX, e.clientY)
+        
+    }else{
+        if (parentWithClass !== null) {
+            parentWithClass.classList.add('drag');
+            CurrentObjectGet = parentWithClass.id;
+
+            MoveTask(parentWithClass, e.clientX, e.clientY)
+        }
     }
 })
 
