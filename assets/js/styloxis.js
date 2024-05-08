@@ -92,13 +92,15 @@ window.addEventListener('pointerdown', function (e) {
     let btnDelete = findParentWithClass(e.target, 'btnDelete');
     if (btnDelete !== null) { 
 
-        
+
     }else{
         if (parentWithClass !== null) {
             parentWithClass.classList.add('drag');
+            //parentWithClass.style = "pointer-events:none;"
+
             CurrentObjectGet = parentWithClass.id;
 
-            MoveTask(parentWithClass, e.clientX, e.clientY)
+            MoveTask(parentWithClass, e.clientX - (window.innerWidth * 0.15), e.clientY - 30)
         }
     }
 })
@@ -128,8 +130,10 @@ window.addEventListener('pointerup', function (e) {
 })
 
 window.addEventListener('pointermove', function (event) {
-    var x = event.clientX;
-    var y = event.clientY;
+    var x = event.clientX - (window.innerWidth * 0.15);
+    var y = event.clientY - 30;
+
+    console.log(event);
 
     var drag = document.querySelector(".drag");
 
