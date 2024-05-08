@@ -181,7 +181,6 @@ body main .task__container .add__toggle button {
 body main .task__container .zone__task {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 body main .task__container .zone__task .task {
   -webkit-user-select: none; /* Safari /
@@ -218,6 +217,10 @@ body main .task__container .zone__task .task:hover .description {
 body main .task__container .zone__task .drag {
   width: 28%;
   position: absolute;
+  box-shadow: 2px 2px 5px #333;
+  pointer-events: none;
+  transition: box-shadow ease 0.3s, transform ease 0.3s;
+  transform: scale(1.1);
 }
 body footer {
   width: 100%;

@@ -213,7 +213,6 @@ body{
             .zone__task{
                 display: flex;
                 flex-direction: column;
-                overflow: hidden;
                 .task{
                     -webkit-user-select: none; /* Safari /
                         -ms-user-select: none; / IE 10 and IE 11 /
@@ -252,6 +251,10 @@ body{
                 .drag{
                     width: 28%;
                     position: absolute;
+                    box-shadow: 2px 2px 5px #333;
+                    pointer-events: none;
+                    transition: box-shadow ease 0.3s, transform ease 0.3s;
+                    transform: scale(1.1);
                 }
             }
         }
