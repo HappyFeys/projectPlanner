@@ -55,7 +55,7 @@ function SetBalise(id) {
 
 export let AddTask = (e) => {
     let zone = document.getElementsByClassName('add__toggle');
-    let id = parseInt(e.target.parentNode.id)
+    let id = parseInt(findParentWithClass(e.target, "btnPlus").id)
 
     if (zone[id].innerHTML == "") {
         zone[id].innerHTML = SetBalise(id)
@@ -124,13 +124,17 @@ window.addEventListener('pointermove', function (event) {
     var y = event.clientY;
 
     var drag = document.querySelector(".drag");
-    drag.style.position = "absolute";
-    drag.style.left = `${x}px`;
-    drag.style.top = `${y}px`;
+
+    if (drag != null) {
+        drag.style.position = "absolute";
+    
+        drag.style.left = `${x}px`;
+        drag.style.top = `${y}px`;
+    }
 })
 
 
-function findParentWithClass(element, className) {
+export function findParentWithClass(element, className) {
     // Si l'élément est null ou si nous avons atteint l'élément racine du document, retourner null
     if (element === null || element === document.body) {
         return null;

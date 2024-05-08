@@ -1,4 +1,4 @@
-import { GetAllFlame, GetAllOnWorking, GetAllOnDone } from "./styloxis.js"
+import { GetAllFlame, GetAllOnWorking, GetAllOnDone, findParentWithClass } from "./styloxis.js"
 import { Get, Set } from "./LocalStorage.js"
 
 
@@ -36,9 +36,9 @@ export let CreateTask = (e) => {
 let deleteTask = (e) => {
     let Task = Array.from(Get("taskList", []));
 
+    let target = findParentWithClass(e.target,"btnDelete")
     for (let i = 0; i < Task.length; i++) {
         if (Task[i].newTask.creation + "" == e.target.id + "") {
-            console.log("test")
             Task.splice(i, 1);
             i = 99999;
         }
@@ -53,7 +53,24 @@ export function ReloadPlanning() {
     cleanHTML();
 
     let Task = Array.from(Get("taskList", []));
-    Task.forEach(element => {
+
+    let Tab_0 = [];
+    let Tab_1 = [];
+    let Tab_2 = [];
+
+    for (const x of Task) {
+        console.log(x)
+        if (x.id + "" == "0") { Tab_0.push(x)}
+        if (x.id + "" == "1") { Tab_1.push(x) }
+        if (x.id + "" == "2") { Tab_2.push(x) }
+    }
+
+    let newTab = []
+    newTab = newTab.concat(Tab_0)
+    newTab = newTab.concat(Tab_1)
+    newTab = newTab.concat(Tab_2)
+
+    newTab.forEach(element => {
         generateHTML(element.newTask, element.id)
     });
 
@@ -96,7 +113,8 @@ function generateHTML(obj,i) {
 
     let btn = document.createElement('button')
     btn.addEventListener('click', deleteTask)
-    btn.textContent = "X"
+    btn.textContent = "X"; //innerHTML = '<span class="material-symbols-outlined">delete</span >'
+    btn.classList.add("btnDelete")
     btn.id = obj.creation + "";
 
     bd.appendChild(btn)
