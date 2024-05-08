@@ -35,7 +35,7 @@ export function GetAllOnDone() {
 
 
 function SetBalise(id) {
-    const CurrentDate = new Date();
+    const CurrentDate = new Date()
     let m = CurrentDate.getMonth() + 1
     let d = CurrentDate.getDate()
     let MinDate = CurrentDate.getFullYear() + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d);
@@ -87,20 +87,18 @@ for (let a = 0; a < cont.length; a++){
     cont[a].id = a;
 }
 
-
 window.addEventListener('pointerdown', function (e) {
-    let parentWithClass = findParentWithCertainClass(e.target, 'task');
+    let parentWithClass = findParentWithClass(e.target, 'task');
     if (parentWithClass !== null) {
         parentWithClass.classList.add('drag');
         CurrentObjectGet = parentWithClass.id;
-        console.log(CurrentObjectGet)
     }
 })
 
 window.addEventListener('pointerup', function (e) {
     if (CurrentObjectGet != "") {
-        let parentWithClass = findParentWithCertainClass(e.target, 'task__container');
-        console.log(parentWithClass)
+        let parentWithClass = findParentWithClass(e.target, 'task__container');
+
         if (parentWithClass == null) {
             ReloadPlanning()
         } else {
@@ -121,7 +119,6 @@ window.addEventListener('pointerup', function (e) {
     }
 })
 
-
 window.addEventListener('pointermove', function (event) {
     var x = event.clientX;
     var y = event.clientY;
@@ -133,7 +130,7 @@ window.addEventListener('pointermove', function (event) {
 })
 
 
-function findParentWithCertainClass(element, className) {
+function findParentWithClass(element, className) {
     // Si l'élément est null ou si nous avons atteint l'élément racine du document, retourner null
     if (element === null || element === document.body) {
         return null;
@@ -143,5 +140,5 @@ function findParentWithCertainClass(element, className) {
         return element;
     }
     // Sinon, continuer à chercher récursivement dans l'arbre DOM
-    return findParentWithCertainClass(element.parentNode, className);
+    return findParentWithClass(element.parentNode, className);
 }
