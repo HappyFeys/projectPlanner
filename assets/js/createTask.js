@@ -47,7 +47,7 @@ let deleteTask = (e) => {
     ReloadPlanning();
 }
 
-function ReloadPlanning() {
+export function ReloadPlanning() {
     cleanHTML();
 
     let Task = Array.from(Get("taskList", []));
@@ -65,11 +65,11 @@ function ReloadPlanning() {
 
     pb.style = "overflow: hidden;display: flex;flex-direction: row;"
     
-    doing.style = "width: " + (doingPercent) + "%;background-color: yellow;"
-    done.style = "width: " + (donePercent) + "%;background-color: green"
+    doing.style = "width: " + (doingPercent) + "%;background-color: yellow;transition: width 0.5s"
+    done.style = "width: " + (donePercent) + "%;background-color: green;transition: width 0.5s"
 
-    doing.textContent = ' '
-    done.textContent = ' '
+    doing.textContent = doingPercent > 0 ? ' ' : ""
+    done.textContent = donePercent > 0 ? ' ' : ""
 
 }
 
@@ -79,12 +79,14 @@ function cleanHTML() {
         zone.innerHTML = "";
     }
 }
+let isDragging = false;
 function generateHTML(obj,i) {
     const zoneTask = document.querySelectorAll('.zone__task')
 
     //création de la zone de task
     const div = document.createElement('div');
     div.classList.add('task');
+    div.id = obj.creation + "";
     
     let ls = Html_div("leftSide");
     let sd = Html_div("scoreDate");

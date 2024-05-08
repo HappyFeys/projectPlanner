@@ -1,4 +1,4 @@
-import { CreateTask } from "./createTask.js"
+import { CreateTask, ReloadPlanning } from "./createTask.js"
 import { Get, Set } from "./LocalStorage.js"
 
 
@@ -76,4 +76,72 @@ export let AddTask = (e) => {
     let zones = document.getElementsByClassName('add__toggle');
     for (const zone of zones) {
         zone.innerHTML = "";
+}
+    
+// drag and drop
+
+let CurrentObjectGet = ""
+
+let cont = document.querySelectorAll('.task__container');
+for (let a = 0; a < cont.length; a++){
+    cont[a].id = a;
+}
+
+
+window.addEventListener('pointerdown', function (e) {
+    let parentWithClass = findParentWithCertainClass(e.target, 'task');
+    if (parentWithClass !== null) {
+        parentWithClass.classList.add('drag');
+        CurrentObjectGet = parentWithClass.id;
+        console.log(CurrentObjectGet)
     }
+})
+
+window.addEventListener('pointerup', function (e) {
+    if (CurrentObjectGet != "") {
+        let parentWithClass = findParentWithCertainClass(e.target, 'task__container');
+        console.log(parentWithClass)
+        if (parentWithClass == null) {
+            ReloadPlanning()
+        } else {
+            let Task = Array.from(Get("taskList", []));
+
+            
+            for (const X of Task) {
+                if (X.newTask.creation == CurrentObjectGet) {
+                    X.id = parentWithClass.id;
+                    CurrentObjectGet = "";
+                }
+            }
+            Set("taskList", Task);
+
+
+            ReloadPlanning()
+        }
+    }
+})
+
+
+window.addEventListener('pointermove', function (event) {
+    var x = event.clientX;
+    var y = event.clientY;
+
+    var drag = document.querySelector(".drag");
+    drag.style.position = "absolute";
+    drag.style.left = `${x}px`;
+    drag.style.top = `${y}px`;
+})
+
+
+function findParentWithCertainClass(element, className) {
+    // Si l'élément est null ou si nous avons atteint l'élément racine du document, retourner null
+    if (element === null || element === document.body) {
+        return null;
+    }
+    // Si l'élément parent a la classe recherchée, retourner l'élément parent
+    if (element.classList.contains(className)) {
+        return element;
+    }
+    // Sinon, continuer à chercher récursivement dans l'arbre DOM
+    return findParentWithCertainClass(element.parentNode, className);
+}
