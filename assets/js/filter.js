@@ -100,14 +100,15 @@ function check(){
                     for (const container of containers) {
                         container.style.display = "none";
                     }
+                    let bool = !checkboxes[0].checked && !checkboxes[1].checked && !checkboxes[2].checked 
                     for (let index = 0; index < checkboxes.length; index++) {
-                        if(checkboxes[index].id == "toDo" && checkboxes[index].checked){
+                        if((checkboxes[index].id == "toDo" && checkboxes[index].checked) || bool){
                             containers[0].style.display = "block";
                         }
-                        if(checkboxes[index].id == "doing" && checkboxes[index].checked){
+                        if((checkboxes[index].id == "doing" && checkboxes[index].checked)|| bool){
                             containers[1].style.display = "block";
                         }
-                        if(checkboxes[index].id == "done" && checkboxes[index].checked){
+                        if((checkboxes[index].id == "done" && checkboxes[index].checked)|| bool){
                             containers[2].style.display = "block";
                             //i choose the numbr index since i only have 3 containers;
                         }
