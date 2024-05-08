@@ -65,8 +65,8 @@ body{
             padding: 10px;
             .header__title{
                 .logo{
-                    // width: 450px;
-                    // height: 380px;
+                    width: 165px;
+                    height: auto;
                     justify-items: center;
                 }
                 p{
@@ -77,6 +77,8 @@ body{
                 width: 25px;
                 height: 25px;
                 border-radius: 25px;
+                border: none;
+                
             }
             #filter--global{
                 align-self: flex-end;
@@ -106,7 +108,7 @@ body{
                     position: relative;
                     outline: none;
                     cursor: pointer;
-                    transition: 0.5s;            
+                    transition: 0.5s;       
                 }
                 
                 .checkbox::before{
@@ -149,6 +151,25 @@ body{
                     transform: translate(-50%,-50%);
                     transition: 0.5s;
                 }
+
+                section{
+                    #filter--global{
+                            .filter-options-container{
+                                width: fit-content;
+                                height: fit-content;
+                                background-color: #f0f0f0;
+                                padding: 5px;
+                                border-radius: 0 5px 5px 5px ;
+                                border: 1px solid var(--border);
+                                label{
+                                    margin: 5px;
+                                    text-wrap: nowrap;
+
+                                }
+                            }
+                    }
+                }
+
             }
         }
         #progressionBar{
@@ -192,6 +213,10 @@ body{
                 width: 25px;
                 height: 25px;
                 border-radius: 25px;
+                border: none;
+            }
+            select{
+                border-radius: 5px;
             }
             .task__container__header{
                 display: flex;
