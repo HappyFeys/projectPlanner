@@ -12,23 +12,25 @@ export let CreateTask = (e) => {
     let valueScore = GetValueById('taskPriority_' + getid)
     let valueDeadLine = GetValueById('taskDate_' + getid)
 
+    if (valueName != "") {
         //création de l'objet
         const newTask = {
             taskName: valueName,
-            description : valueDescription,
-            score : valueScore,
+            description: valueDescription,
+            score: valueScore,
             deadLine: (new Date(valueDeadLine)).getTime(),
             creation: (new Date()).getTime()
         };
     
-    let Task = Array.from(Get("taskList",[]));
-    Task.push({ id: getid, newTask: newTask });
-    Set("taskList", Task);
+        let Task = Array.from(Get("taskList", []));
+        Task.push({ id: getid, newTask: newTask });
+        Set("taskList", Task);
 
-    let zone = document.getElementsByClassName('add__toggle');
-    zone[getid].innerHTML = "";
+        let zone = document.getElementsByClassName('add__toggle');
+        zone[getid].innerHTML = "";
     
-    ReloadPlanning();
+        ReloadPlanning();
+    }
 }
 
 let deleteTask = (e) => {
@@ -79,7 +81,7 @@ function cleanHTML() {
         zone.innerHTML = "";
     }
 }
-let isDragging = false;
+
 function generateHTML(obj,i) {
     const zoneTask = document.querySelectorAll('.zone__task')
 
