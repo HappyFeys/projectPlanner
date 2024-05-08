@@ -1,0 +1,252 @@
+:root {
+  --background: #f0f0f0;
+  --border: #333;
+  --color: #140d27;
+  --header: #4D7E96;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  background-color: var(--background);
+  transition: all ease-in-out 0.25s;
+}
+body header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--header);
+  color: var(--color);
+}
+body header .header__top {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+body header .header__top .header__title .logo {
+  width: 165px;
+  height: auto;
+  justify-items: center;
+}
+body header .header__top .header__title p {
+  margin: 5px 0;
+}
+body header .header__top button {
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  border: none;
+}
+body header .header__top #filter--global {
+  align-self: flex-end;
+}
+body header .header__top #filter--global .filter-options-container {
+  position: absolute;
+  width: 60px;
+  text-align: center;
+}
+body header .header__top .header__btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+body header .header__top .header__btn input {
+  margin-top: 10px;
+}
+body header .header__top .header__btn .checkbox {
+  height: 17.5px;
+  width: 35px;
+  background: #222;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 17.5px;
+  box-shadow: inset 0 4px 17.5px rgba(0, 0, 0, 0.1), inset 0 4px 4px rgba(0, 0, 0, 0.1), inset 0 -2px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+body header .header__top .header__btn .checkbox::before {
+  height: 17.5px;
+  width: 17.5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  background: linear-gradient(to bottom, #444, #222);
+  border-radius: 17.5px;
+  transform: scale(0.9);
+  transition: 0.5s;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5), inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px 1px rgba(255, 255, 255, 0.2);
+}
+body header .header__top .header__btn .checkbox:checked {
+  background: #fff;
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1), inset 0 1px 4px rgba(0, 0, 0, 0.1), inset 0 -2px 2px rgba(0, 0, 0, 0.05);
+}
+body header .header__top .header__btn .checkbox:checked::before {
+  left: 17.5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), inset 1px 1px rgb(255, 255, 255), inset -1px 1px rgb(255, 255, 255);
+  background: linear-gradient(to bottom, #eaeaea, #f9f9f9);
+}
+body header .header__top .header__btn .checkbox::after {
+  content: "";
+  position: absolute;
+  top: 80px;
+  left: 35px;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+}
+body header .header__top .header__btn section #filter--global .filter-options-container {
+  width: fit-content;
+  height: fit-content;
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 0 5px 5px 5px;
+  border: 1px solid var(--border);
+}
+body header .header__top .header__btn section #filter--global .filter-options-container label {
+  margin: 5px;
+  text-wrap: nowrap;
+}
+body header #progressionBar {
+  width: 85%;
+  height: 20px;
+  border-radius: 20px;
+  background-color: crimson;
+  margin: 20px 0;
+}
+body header .toggleProject {
+  display: flex;
+  flex-direction: column;
+}
+body header .toggleProject input {
+  margin: 5px 5px;
+}
+body main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color);
+}
+@media only screen and (min-width: 768px) {
+  body main {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+body main .task__container {
+  width: 85%;
+  border: 1px solid var(--border);
+  margin: 30px 0;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 1px 2px 4px var(--color);
+}
+@media only screen and (min-width: 768px) {
+  body main .task__container {
+    margin: 30px 10px;
+    min-height: 400px;
+  }
+}
+body main .task__container button {
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  border: none;
+}
+body main .task__container select {
+  border-radius: 5px;
+}
+body main .task__container .task__container__header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+body main .task__container .add__toggle {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border);
+}
+body main .task__container .add__toggle input, body main .task__container .add__toggle select, body main .task__container .add__toggle button {
+  margin: 2px;
+}
+body main .task__container .add__toggle button {
+  align-self: flex-end;
+}
+body main .task__container .zone__task {
+  display: flex;
+  flex-direction: column;
+}
+body main .task__container .zone__task .task {
+  -webkit-user-select: none; /* Safari /
+-ms-user-select: none; / IE 10 and IE 11 /
+user-select: none; / Standard syntax */
+  display: flex;
+  font-size: 12px;
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  background-color: #EBE6E0;
+  color: #0C2F41;
+}
+body main .task__container .zone__task .task .leftSide {
+  width: 75%;
+}
+body main .task__container .zone__task .task .scoreDate {
+  display: flex;
+  justify-content: space-between;
+}
+body main .task__container .zone__task .task .description {
+  display: none;
+}
+body main .task__container .zone__task .task .btnDelete {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body main .task__container .zone__task .task:hover .description {
+  display: block;
+}
+body main .task__container .zone__task .drag {
+  width: 28%;
+  position: absolute;
+  box-shadow: 2px 2px 5px #333;
+  pointer-events: none;
+  transition: box-shadow ease 0.3s, transform ease 0.3s;
+  transform: scale(1.1);
+}
+body footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--header);
+  padding: 20px;
+  color: var(--color);
+}
