@@ -1,5 +1,6 @@
 import { GetAllFlame, GetAllOnWorking, GetAllOnDone, findParentWithClass } from "./styloxis.js"
 import { Get, Set } from "./LocalStorage.js"
+import { sortAlphabetique, sortDate, sortscore } from "./filter.js"
 
 
 export let CreateTask = (e) => {
@@ -59,11 +60,20 @@ export function ReloadPlanning() {
     let Tab_2 = [];
 
     for (const x of Task) {
-        console.log(x)
+        //console.log(x)
         if (x.id + "" == "0") { Tab_0.push(x)}
         if (x.id + "" == "1") { Tab_1.push(x) }
         if (x.id + "" == "2") { Tab_2.push(x) }
     }
+
+    const filters = document.querySelectorAll(".filter--local");
+    
+    for (let i = 0; i < filters.length; i++){
+        if (filters[i].value == "date") { if (i == 0) { Tab_0 = sortDate(Tab_0) }; if (i == 1) { Tab_1 = sortDate(Tab_1) }; if (i == 2) { Tab_2 = sortDate(Tab_2) }; }
+        if (filters[i].value == "name") { if (i == 0) { Tab_0 = sortAlphabetique(Tab_0) }; if (i == 1) { Tab_1 = sortAlphabetique(Tab_1) }; if (i == 2) { Tab_2 = sortAlphabetique(Tab_2) }; }
+        if (filters[i].value == "score") { if (i == 0) { Tab_0 = sortscore(Tab_0) }; if (i == 1) { Tab_1 = sortscore(Tab_1) }; if (i == 2) { Tab_2 = sortscore(Tab_2) }; }
+    }
+
 
     let newTab = []
     newTab = newTab.concat(Tab_0)
@@ -134,7 +144,15 @@ function generateHTML(obj,i) {
     zoneTask[i].appendChild(div)
 }
 
+
 ReloadPlanning();
+
+const filters = document.querySelectorAll(".filter--local");
+
+for (let i = 0; i < filters.length; i++) {
+    filters[i].addEventListener('change', ReloadPlanning)
+}
+
 
 //  Function recurante
 function Html_p(text,classAdded) {
