@@ -122,18 +122,18 @@ function check(){
 //La fonction sort compare l'élément actuel (a) avec l'élément suivant du tableau (b)
 // so that can be used elsewhere export:
 export function sortAlphabetique(array) {
-    array.sort((a,b)=> a.newTask.taskName.localCompare(b.newTask.taskName));
+    array.sort((a, b) => a.newTask.taskName.localeCompare(b.newTask.taskName))
     return array
 }
 
 //les fonctions sort va calculer la différence entre b et a et va trier en fonction de cette différence (<0 ou >0)
 export function sortDate(array) {
-    array.sort((a,b)=> b.newTask.deadLine - a.newTask.deadLine);
+    array.sort((a, b) => a.newTask.deadLine - b.newTask.deadLine);
     return array
 }
-    //if not substracted it will take the fist one meets which logically it isn't 
 
-function sortscore(array) {
+    //if not substracted it will take the fist one meets which logically it isn't 
+export function sortscore(array) {
     array.sort((a,b)=> a.newTask.score.length - b.newTask.score.length);
     return array
 }
