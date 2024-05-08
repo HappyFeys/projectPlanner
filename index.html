@@ -19,11 +19,14 @@
                 <p id="project--name"><!-- Nom généré en JS --></p>
                 <p id="project--deadLine"><!-- DeadLine généré en JS--></p>
             </div>
-            <button id="filter--global"><i class="fas fa-filter"></i></button>
+            <div class="header__btn">
+                <input type="checkbox" class="checkbox" checked><!--darkMode-->
+                <button id="filter--global"><i class="fas fa-filter"></i></button>
+            </div>
         </div>
         <div id="progressionBar">
-            <div id="doing"></div>
             <div id="done"></div>
+            <div id="doing"></div>
         </div>
     </header>
     <main>
@@ -84,5 +87,6 @@
     <script type="module" src="assets/js/styloxis.js"></script>
     <script type="module" src="assets/js/createProject.js"></script>
     <script type="module" src="assets/js/filter.js"></script>
+    <script type="module" src="assets/js/darkmode.js"></script>
 </body>
 </html>

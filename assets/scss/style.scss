@@ -1,9 +1,17 @@
 //Variable color
+:root{
+    --background : #f0f0f0;
+    --border: #333;
+    --color: #140d27;
+    --header : #4D7E96;
+}
 
 $raisinBlack : #140D27;
 $acidGreen : #B7C828;
 $platinium : #EBE6E0;
-$moonstoneBlue : #6CB1B4;
+$moonstoneBlue : #0C2F41;
+$background : #f0f0f0;
+$border : #333;
 
 //font familly
 $poppins : "Poppins", sans-serif;
@@ -32,15 +40,15 @@ body{
     width: 100%;
     font-family: $poppins;
     font-weight:300 ;
-    background-color: #f0f0f0;
-    color: $raisinBlack;
+    background-color: var(--background);
     header{
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: $moonstoneBlue;
+        background-color: var(--header);
+        color: var(--color);
         .header__top{
             width: 85%;
             display: flex;
@@ -70,6 +78,69 @@ body{
                         // background-color: #6CB1B4;
                     }
             }
+            .header__btn{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                input{
+                    margin-top: 10px;
+                }
+                .checkbox{
+                    height: 17.5px;
+                    width: 35px;
+                    background: #222;
+                    appearance: none;
+                    border-radius: 17.5px;
+                    box-shadow: inset 0 4px 17.5px rgba(0,0,0,0.1),
+                                inset 0 4px 4px rgba(0,0,0,0.1),
+                                inset 0 -2px 2px rgba(0,0,0,0.1);
+                    position: relative;
+                    outline: none;
+                    cursor: pointer;
+                    transition: 0.5s;            
+                }
+                
+                .checkbox::before{
+                    height: 17.5px;
+                    width: 17.5px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    content: "";
+                    background: linear-gradient(to bottom,#444,#222);
+                    border-radius: 17.5px;
+                    transform: scale(0.9);
+                    transition: 0.5s;
+                    box-shadow: 0 4px 5px rgba(0,0,0,0.5),
+                                inset 1px 1px rgba(255,255,255,0.2),
+                                inset -1px 1px rgba(255,255,255,0.2);
+                }
+                
+                .checkbox:checked{
+                    background: #fff;
+                    box-shadow: inset 0 1px 5px rgba(0,0,0,0.1),
+                                inset 0 1px 4px rgba(0,0,0,0.1),
+                                inset 0 -2px 2px rgba(0,0,0,0.05);
+                }
+                
+                .checkbox:checked::before{
+                    left: 17.5px;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1),
+                                inset 1px 1px rgba(255,255,255,1),
+                                inset -1px 1px rgba(255,255,255,1);
+                    background: linear-gradient(to bottom,#eaeaea,#f9f9f9);            
+                }
+                
+                .checkbox::after{
+                    content: "";
+                    position: absolute;
+                    top: 80px;
+                    left: 35px;
+                    z-index: -1;
+                    transform: translate(-50%,-50%);
+                    transition: 0.5s;
+                }
+            }
         }
         #progressionBar{
             width: 85%;
@@ -92,6 +163,7 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
+        color: var(--color);
         @include responsive(768px){
             flex-direction: row;
             align-items: flex-start;
@@ -99,11 +171,11 @@ body{
         }
         .task__container{
             width: 85%;
-            border: 1px solid #333;
+            border: 1px solid var(--border);
             margin: 30px 0;
             border-radius: 20px;
             padding: 10px;
-            box-shadow: 1px 2px 4px $raisinBlack;
+            box-shadow: 1px 2px 4px var(--color);
             @include responsive(768px){
                 margin: 10px;
                 min-height: 400px;
@@ -116,13 +188,13 @@ body{
             .task__container__header{
                 display: flex;
                 justify-content: space-between;
-                border-bottom: 1px solid #333;
+                border-bottom: 1px solid var(--border);
                 padding-bottom: 10px;
             }
             .add__toggle{
                 display: flex;
                 flex-direction: column;
-                border-bottom: 1px solid #333;
+                border-bottom: 1px solid var(--border);
                 input, select, button{
                     margin: 2px;
                 }
@@ -134,12 +206,29 @@ body{
                 display: flex;
                 flex-direction: column;
                 .task{
+                    display: flex;
                     font-size: 12px;
                     padding: 10px;
                     margin: 10px;
-                    border: 1px solid #333;
+                    border: 2px solid var(--border);
                     border-radius: 20px;
-
+                    background-color: $platinium;
+                    color: $moonstoneBlue;
+                    .leftSide{
+                        width: 75%;
+                    }
+                    .scoreDate{
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    .description{
+                        display: none;
+                    }
+                }
+                .task:hover{
+                    .description{
+                        display: block;
+                    }
                 }
             }
         }
@@ -149,7 +238,8 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: $platinium;
+        background-color: var(--header);
         padding: 20px;
+        color: var(--color);
     }
 }
