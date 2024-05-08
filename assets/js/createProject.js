@@ -2,8 +2,6 @@ import { Get, Set } from "./LocalStorage.js"
 
 function toggleInput() {
     const btnToggle = document.querySelector("#btnAddProject")
-    const projectName =document.querySelector("#project--name")
-    const projectDeadLine = document.querySelector("#project--deadLine")
     btnToggle.addEventListener("click", (e)=>{
         if (!(e.target.parentNode.parentNode.children[4])) {
             createZone()
@@ -24,20 +22,19 @@ function toggleInput() {
                 name : inputName.value,
                 deadline : inputDeadLine.value
             }
-            projectName.innerText = title.name;
-            let dateDeadLine = new Date(title.deadline)
-            let day = dateDeadLine.getDate()
-            let month = dateDeadLine.getMonth()
-            let year = dateDeadLine.getFullYear()
-            let monthList = ["January","February", "March","April", "May", "June", "July", "August", "September", "October", "November", "December"]
-            console.log(day);
-            console.log(month);
-            projectDeadLine.innerText =`DeadLine : ${day} ${monthList[month]} ${year}` ;
+            initTitle(title)
         }
     })
 }
 
 toggleInput()
+let title={
+    name:"",
+    deadline: new Date()
+}
+
+let projectTitle = Get("title", title)
+initTitle(projectTitle)
 
 function createZone() { 
     const headerTitle = document.querySelector(".header__title")
@@ -49,8 +46,30 @@ function createZone() {
     inputNameProject.placeholder = "Enter the name project"
     const inputDeadLineProject = document.createElement("input")
     inputDeadLineProject.type="date"
+    let today = new Date()
+    let m = today.getMonth()+1
+    let d = today.getDate()
+    inputDeadLineProject.min=today
+    inputDeadLineProject.value=today.getFullYear() + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d);
     inputDeadLineProject.classList.add("inputDeadLine")
     inputDeadLineProject.placeholder = "Enter the dead line"
     div.appendChild(inputNameProject)
     div.appendChild(inputDeadLineProject)
+}
+
+function initTitle(title) {
+    const projectName =document.querySelector("#project--name")
+    const projectDeadLine = document.querySelector("#project--deadLine")
+    Set("title", title)
+    let project = Get("title", title)
+    console.log(project.name);
+    projectName.innerText = project.name;
+    let dateDeadLine = new Date(project.deadline)
+    let day = dateDeadLine.getDate()
+    let month = dateDeadLine.getMonth()
+    let year = dateDeadLine.getFullYear()
+    let monthList = ["January","February", "March","April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    if (!(project.name =="")) {
+        projectDeadLine.innerText =`DeadLine : ${day} ${monthList[month]} ${year}` ;
+    }
 }
