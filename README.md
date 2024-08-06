@@ -1,12 +1,21 @@
 # projectPlanner
 
-## La team :
+Projet réalisé dans le cadre de ma formation chez Becode.
+Ce projet visait à mettre en oeuvre nos compétences acquises en JavaScript.
 
-- Zahra
-- Nathanael
-- Dylan
+## Table of contents
 
-## Objectif global : 
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+- [Author](#author)
+
+## Overview
+
+### Le challenge
 
 - Une création de tâche dans lequel on peut donner un nom, une description, une deadline et un nombre de points.
 - 3 panneaux dans lequel on affiche les tâches (à faire, en réalisation et fini). L'idée est de réaliser un affichage du nom et de la deadline (petit tricks, au hover, on a la description de la tâche)
@@ -17,40 +26,27 @@
 - système de point pour marquer la progression
 - petit bonus -> drag and drop pour changer de tableau la tâche
 
-## Répartition des tâches : 
+### Screenshot
 
-Les tâches ont été répartie par fonctionnalité. Nous avons définis des objectifs journaliers et prévu des mises au point régulièrement.
-Jour 1 :
-Objectif : 
-Choisir la chartre graphique
-HTML/CSS de l'ensemble
-Création de tâche dans le bon tableau + système de points.
-LocalStorage
+![alt text](./screenshot/projectplanner.png)
+![alt text](./screenshot/projectplanner2.png)
 
-Répartition : 
+### Links
 
-Zahra -> HTML/CSS de la base
-Nath -> Bouton de création de tâche + LocalStorage + help Dylan
-Dylan -> Création des tâche dans le bon tableau + help Zahra
+- Live Site URL: [https://happyfeys.github.io/projectPlanner/](https://happyfeys.github.io/projectPlanner/)
 
-Jour 2:
-Objectif : 
-CSS de la tâche créé dynamiquement
-DarkMode
-Commencer les fonctions de tri
-Début du drag and drop
+## My process
 
-Répartition : 
+### Build with
 
-Zahra -> fonction de tri
-Nath -> drag and drop
-Dylan -> css de la tâche + dark mode
+- Semantic HTML5 markup
+- SCSS
+- JavaScript Vanilla
+- Flexbox
+- Mobile-first workflow
 
-Jour 3:
-Objectif : 
-Mise au point des derniers modifs
-Réparation des bugs
+## Auteur
 
-Répartition : 
-Travail en groupe sur les derniers pépins.
-
+- [Zahra](https://github.com/zaraana)
+- [Nathanael](https://github.com/NathAmd)
+- [Dylan](https://github.com/HappyFeys)
